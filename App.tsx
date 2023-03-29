@@ -9,17 +9,14 @@ import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
   StatusBar,
-  StyleSheet,
-  Text,
   useColorScheme,
-  View,
 } from 'react-native';
 
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
+import { HomeScreen } from './src/screens';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -40,17 +37,7 @@ function App(): JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-       
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Text>Amazon clone</Text>
-        </View>
-      </ScrollView>
+     <HomeScreen/>
     </SafeAreaView>
   );
 }
