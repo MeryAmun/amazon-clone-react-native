@@ -16,7 +16,7 @@ import {
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
-import { HomeScreen } from './src/screens';
+import { HomeScreen, ProductScreen } from './src/screens';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -37,7 +37,8 @@ function App(): JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-     <HomeScreen/>
+     {/* <HomeScreen/> */}
+     <ProductScreen/>
     </SafeAreaView>
   );
 }

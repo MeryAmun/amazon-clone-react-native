@@ -18,19 +18,19 @@ interface ProductItemProps{
     }
 }
 const ProductItem = ({item}:ProductItemProps) => {
-  
+ 
   return (
-    <View key={item.id}>
+    <View>
       <View style={styles.root}>
         <Image
           style={styles.image}
-          source={{
-            uri: item.image
-          }}
+          source={{uri: item.image}}
+          
         />
         <View style={styles.rightContainer}>
           <Text style={styles.title} numberOfLines={3}>
            {item.title}
+           
           </Text>
           <View style={styles.ratingsContainer}>
            {

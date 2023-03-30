@@ -26,6 +26,11 @@ export const styles = StyleSheet.create({
       fontSize: 18,
       fontWeight: 'bold',
     },
+    oldPrice:{
+      fontSize:12,
+      fontWeight:'normal',
+      textDecorationLine:'line-through'
+    },
     ratingsContainer: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -34,10 +39,6 @@ export const styles = StyleSheet.create({
     star: {
       margin: 5,
     },
-    oldPrice:{
-      fontSize:12,
-      fontWeight:'normal',
-      textDecorationLine:'line-through'
-    }
+   
   });
   
