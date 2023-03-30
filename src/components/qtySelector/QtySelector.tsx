@@ -4,7 +4,7 @@ import React from 'react';
 
 interface QuantityProps {
     quantity:number,
-    setQuantity:Function
+    setQuantity:Function,
     
 }
 

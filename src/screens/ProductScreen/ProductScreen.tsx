@@ -3,12 +3,16 @@ import { Text, View } from 'react-native'
 import product from '../../data/product'
 import {Picker} from '@react-native-picker/picker';
 import { styles } from './styles'
-import { QtySelector } from '../../components';
+import { Buttons, QtySelector } from '../../components';
 
 
 const ProductScreen = () => {
     const [option, setOption] = useState(product.options ? product.options[0] : null);
-    const [qty, setQty] = useState(1)
+    const [qty, setQty] = useState(1);
+
+    const handlePress = () => {
+console.log('press')
+    }
   return (
     <View>
       <Text style={styles.title}>{product.title}</Text>
@@ -33,6 +37,8 @@ const ProductScreen = () => {
     {/* qty selector*/}
     <QtySelector quantity={qty} setQuantity={setQty}/>
     {/* buttons*/}
+    <Buttons text='Add To Cart' onButtonPress={handlePress}/>
+    <Buttons text='Buy Now' onButtonPress={() => console.log('buy now')}/>
     </View>
   )
 }
