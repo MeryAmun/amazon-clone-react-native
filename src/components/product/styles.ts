@@ -1,12 +1,10 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
-    page: {
-      padding: 10,
-    },
+
     root: {
       flexDirection: 'row',
-      margin: 10,
+      margin: 5,
       borderEndWidth: 1,
       borderColor: '#d1d1d1',
       borderRadius: 10,
