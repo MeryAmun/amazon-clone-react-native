@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 import product from '../../data/product'
 import {Picker} from '@react-native-picker/picker';
 import { styles } from './styles'
-import { Buttons, QtySelector } from '../../components';
+import { Buttons, ImageCarousel, QtySelector } from '../../components';
 
 
 const ProductScreen = () => {
@@ -14,9 +14,10 @@ const ProductScreen = () => {
 console.log('press')
     }
   return (
-    <View>
+    <View style={styles.root}>
       <Text style={styles.title}>{product.title}</Text>
     {/* image carousel */}
+    <ImageCarousel images={product.images}/>
     <Picker
   selectedValue={option}
   onValueChange={(itemValue, itemIndex) =>
@@ -37,7 +38,10 @@ console.log('press')
     {/* qty selector*/}
     <QtySelector quantity={qty} setQuantity={setQty}/>
     {/* buttons*/}
-    <Buttons text='Add To Cart' onButtonPress={handlePress}/>
+    <Buttons text='Add To Cart' onButtonPress=
+    {handlePress}
+    containerStyles={{backgroundColor:'#e3c905'}}
+    />
     <Buttons text='Buy Now' onButtonPress={() => console.log('buy now')}/>
     </View>
   )

@@ -2,6 +2,10 @@ import { StyleSheet } from 'react-native';
 
 
 export const styles = StyleSheet.create({
+  root:{
+padding:10,
+backgroundColor:'white'
+  },
     title: {
         fontSize: 18,
       },
@@ -18,12 +22,11 @@ export const styles = StyleSheet.create({
         textDecorationLine:'line-through'
       },
     description:{
-
+marginVertical:10,
+lineHeight:20,
     },
     quantitySelector:{
 
     },
-    buttons:{
-
-    }
+    
 })
