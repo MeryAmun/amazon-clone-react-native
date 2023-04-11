@@ -16,7 +16,7 @@ import {
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
-import { HomeScreen, ProductScreen } from './src/screens';
+import { HomeScreen, ProductScreen, ShoppingCart } from './src/screens';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -38,7 +38,8 @@ function App(): JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
      {/* <HomeScreen/> */}
-     <ProductScreen/>
+     {/* <ProductScreen/> */}
+     <ShoppingCart/>
     </SafeAreaView>
   );
 }

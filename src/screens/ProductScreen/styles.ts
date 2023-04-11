@@ -4,7 +4,8 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   root:{
 padding:10,
-backgroundColor:'white'
+backgroundColor:'white',
+height:'100%'
   },
     title: {
         fontSize: 18,

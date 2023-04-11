@@ -5,13 +5,20 @@ import {
   StyleSheet,
   useWindowDimensions,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 interface ImageProps {
   images: string[];
 }
 const ImageCarousel = ({images}: ImageProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const windowWidth = useWindowDimensions().width;
+
+  const onCarouselImageChange = useCallback(({viewableItems}) => {
+    if(viewableItems.length > 0) {
+      setActiveIndex(viewableItems[0]?.index || 0)
+    }
+    // console.log(viewableItems)
+}, [])
   return (
     <View style={styles.root}>
       <FlatList
@@ -28,11 +35,11 @@ const ImageCarousel = ({images}: ImageProps) => {
         snapToAlignment="center"
         decelerationRate={'fast'}
         viewabilityConfig={{
-            viewAreaCoveragePercentageThreshold:50
+          waitForInteraction: true,
+            viewAreaCoveragePercentageThreshold:50,
+            itemVisiblePercentThreshold: 50
         }}
-        // onViewableItemsChanged={({viewableItems}) => {
-        //     console.log(viewableItems)
-        // }}
+        onViewableItemsChanged={onCarouselImageChange }
       />
       <View style={styles.dots}>
         {images.map((image, index) => (
