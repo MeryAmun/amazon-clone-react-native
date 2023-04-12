@@ -5,13 +5,7 @@ import { SafeAreaView, TextInput,View,StyleSheet} from 'react-native';
 import { HomeHeader } from '../components';
 const Stack = createNativeStackNavigator();
 
-const Header = () => {
-  return (
-  <SafeAreaView style={styles.root}>
-<TextInput style={styles.input} placeholder='Search...'/>
-</SafeAreaView>
-  )
-}
+
 const HomeStack = () => {
   const [searchTerm, setSearchTerm] = useState('')
   return (
@@ -40,15 +34,3 @@ const HomeStack = () => {
 };
 
 export default HomeStack;
-const styles = StyleSheet.create({
-  root:{
-  backgroundColor:'#22e3dd'
-  },
- input:{
-    height:40,
-    margin:10,
-    backgroundColor:'white',
-    padding:5,
-    borderRadius:5
-  }
-})
