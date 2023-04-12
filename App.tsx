@@ -12,11 +12,10 @@ import {
   StatusBar,
   useColorScheme,
 } from 'react-native';
-
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
-import { AddressScreen, HomeScreen, ProductScreen, ShoppingCart } from './src/screens';
+import Routes from './src/routes/Routes';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -37,10 +36,7 @@ function App(): JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-     {/* <HomeScreen/> */}
-     {/* <ProductScreen/> */}
-     {/* <ShoppingCart/> */}
-     <AddressScreen/>
+    <Routes/>
     </SafeAreaView>
   );
 }
