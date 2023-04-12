@@ -39,8 +39,7 @@ export const styles = StyleSheet.create({
       marginVertical: 10,
     },
     qtyContainer:{
-marginLeft:30,
-marginVertical:10
+margin:5
     },
     star: {
       margin: 5,

@@ -16,7 +16,7 @@ import {
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
-import { HomeScreen, ProductScreen, ShoppingCart } from './src/screens';
+import { AddressScreen, HomeScreen, ProductScreen, ShoppingCart } from './src/screens';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -39,7 +39,8 @@ function App(): JSX.Element {
       />
      {/* <HomeScreen/> */}
      {/* <ProductScreen/> */}
-     <ShoppingCart/>
+     {/* <ShoppingCart/> */}
+     <AddressScreen/>
     </SafeAreaView>
   );
 }
