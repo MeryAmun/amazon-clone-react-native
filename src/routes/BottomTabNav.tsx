@@ -1,6 +1,6 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {ShoppingCart} from '../screens';
-import Entypo from 'react-native-vector-icons/Entypo';
+import Feather from 'react-native-vector-icons/Feather';
 import HomeStack from './HomeStack';
 import ShoppingCartStack from './ShoppingCartStack';
 const Tab = createBottomTabNavigator();
@@ -18,7 +18,7 @@ const BottomTabNav = () => {
         component={HomeStack}
         options={{
           tabBarIcon: ({color}) => (
-            <Entypo name="home" color={color} size={25} />
+            <Feather name="home" color={color} size={25} />
           ),
           headerShown: false,
         }}
@@ -28,7 +28,7 @@ const BottomTabNav = () => {
         component={ShoppingCartStack}
         options={{
           tabBarIcon: ({color}) => (
-            <Entypo name="shopping-cart" color={color} size={25} />
+            <Feather name="shopping-cart" color={color} size={25} />
           ),
           headerShown: false,
         }}
@@ -38,7 +38,7 @@ const BottomTabNav = () => {
         component={ShoppingCart}
         options={{
           tabBarIcon: ({color}) => (
-            <Entypo name="user" color={color} size={25} />
+            <Feather name="user" color={color} size={25} />
           ),
           headerShown: false,
         }}
@@ -48,7 +48,7 @@ const BottomTabNav = () => {
         component={ShoppingCart}
         options={{
           tabBarIcon: ({color}) => (
-            <Entypo name="menu" color={color} size={25} />
+            <Feather name="settings" color={color} size={25} />
           ),
           headerShown: false,
         }}
