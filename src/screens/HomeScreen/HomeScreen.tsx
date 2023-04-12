@@ -2,8 +2,12 @@ import { View, StyleSheet,FlatList } from 'react-native'
 import { ProductItem } from '../../components'
 import products from '../../data/products'
 
+interface HomeScreenProps{
+  searchTerm:string,
+  }
 
-const HomeScreen = ()=> {
+const HomeScreen = ({searchTerm}:HomeScreenProps) => {
+  console.log(searchTerm)
   return (
     <View style={styles.root}>
       <FlatList

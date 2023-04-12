@@ -22,7 +22,7 @@ const ProductItem = ({item}:ProductItemProps) => {
   const navigation = useNavigation()
  const handlePress = () => {
 console.log(item.title)
-navigation.navigate("ProductScreen")
+navigation.navigate("ProductScreen",{id:item.id})
  }
   return (
     <Pressable onPress={handlePress}>

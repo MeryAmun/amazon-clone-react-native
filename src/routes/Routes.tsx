@@ -6,7 +6,9 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="BottomTabs" component={BottomTabNav} />
+        <Stack.Screen name="BottomTabs" component={BottomTabNav} options={{
+        headerShown: false,
+      }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
