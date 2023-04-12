@@ -1,11 +1,11 @@
-import { View, Text,FlatList } from 'react-native'
+import { View, StyleSheet,FlatList } from 'react-native'
 import { ProductItem } from '../../components'
 import products from '../../data/products'
 
 
 const HomeScreen = ()=> {
   return (
-    <View>
+    <View style={styles.root}>
       <FlatList
         //  keyExtractor={({id}) => id}
            data={products}
@@ -15,4 +15,9 @@ const HomeScreen = ()=> {
     </View>
   )
 }
-export default HomeScreen
+export default HomeScreen;
+const styles = StyleSheet.create({
+  root:{
+    padding:10
+  }
+})

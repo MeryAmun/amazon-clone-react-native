@@ -1,6 +1,7 @@
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, Pressable, Image} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { styles } from './styles'
+import { useNavigation } from '@react-navigation/native';
 
 // type ProductComponentProps = PropsWithChildren<{
 //     title: string;
@@ -18,9 +19,13 @@ interface ProductItemProps{
     }
 }
 const ProductItem = ({item}:ProductItemProps) => {
- 
+  const navigation = useNavigation()
+ const handlePress = () => {
+console.log(item.title)
+navigation.navigate("ProductScreen")
+ }
   return (
-    <View>
+    <Pressable onPress={handlePress}>
       <View style={styles.root}>
         <Image
           style={styles.image}
@@ -52,7 +57,7 @@ const ProductItem = ({item}:ProductItemProps) => {
           </Text>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 export default ProductItem;
