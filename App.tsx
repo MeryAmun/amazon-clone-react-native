@@ -16,6 +16,11 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 import Routes from './src/routes/Routes';
+import { Amplify } from 'aws-amplify';
+import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react-native';
+import awsconfig from './src/aws-exports';
+
+Amplify.configure(awsconfig);
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -44,4 +49,4 @@ function App(): JSX.Element {
 
 
 
-export default App;
+export default withAuthenticator(App);
