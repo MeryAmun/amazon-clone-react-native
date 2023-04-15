@@ -1,5 +1,5 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {ShoppingCart} from '../screens';
+import {ShoppingCart, UserScreen} from '../screens';
 import Feather from 'react-native-vector-icons/Feather';
 import HomeStack from './HomeStack';
 import ShoppingCartStack from './ShoppingCartStack';
@@ -35,7 +35,7 @@ const BottomTabNav = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={ShoppingCart}
+        component={UserScreen}
         options={{
           tabBarIcon: ({color}) => (
             <Feather name="user" color={color} size={25} />

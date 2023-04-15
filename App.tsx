@@ -17,7 +17,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import Routes from './src/routes/Routes';
 import { Amplify } from 'aws-amplify';
-import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react-native';
+import { Authenticator, useAuthenticator,withAuthenticator } from '@aws-amplify/ui-react-native';
 import awsconfig from './src/aws-exports';
 
 Amplify.configure(awsconfig);

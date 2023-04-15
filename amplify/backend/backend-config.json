@@ -1,4 +1,24 @@
 {
+  "api": {
+    "amazonclone": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDate": "2024-04-14T00:35:30.911Z",
+              "apiKeyExpirationDays": 365,
+              "description": "amazoncloneApiKey"
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
   "auth": {
     "amazonclonecfb97e6e": {
       "customAuth": false,
