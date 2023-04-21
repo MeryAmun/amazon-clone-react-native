@@ -19,6 +19,7 @@ import Routes from './src/routes/Routes';
 import { Amplify } from 'aws-amplify';
 import { Authenticator, useAuthenticator,withAuthenticator } from '@aws-amplify/ui-react-native';
 import awsconfig from './src/aws-exports';
+import 'core-js/full/symbol/async-iterator';
 
 Amplify.configure(awsconfig);
 

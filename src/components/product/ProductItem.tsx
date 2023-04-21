@@ -21,7 +21,6 @@ interface ProductItemProps{
 const ProductItem = ({item}:ProductItemProps) => {
   const navigation = useNavigation()
  const handlePress = () => {
-console.log(item.title)
 navigation.navigate("ProductScreen",{id:item.id})
  }
   return (
@@ -52,8 +51,8 @@ navigation.navigate("ProductScreen",{id:item.id})
            }
             <Text>{item.rating}</Text>
           </View>
-          <Text style={styles.price}>{item.price}
-       { item.oldPrice &&  <Text style={styles.oldPrice}>{item.oldPrice}</Text>}
+          <Text style={styles.price}> from ${item.price.toFixed(2)}
+       { item.oldPrice &&  <Text style={styles.oldPrice}>{item.oldPrice.toFixed(2)}</Text>}
           </Text>
         </View>
       </View>
