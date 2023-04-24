@@ -1,23 +1,21 @@
 import React, {useState, useEffect} from 'react';
 import {Text, ScrollView,ActivityIndicator} from 'react-native';
-//import product from '../../data/product';
+
 import {Picker} from '@react-native-picker/picker';
 import {styles} from './styles';
 import {Buttons, ImageCarousel, QtySelector} from '../../components';
-import { useRoute } from '@react-navigation/native';
-import { DataStore } from 'aws-amplify';
-import { Product } from '../../models';
+import { useRoute, useNavigation } from '@react-navigation/native';
+import { DataStore,Auth } from 'aws-amplify';
+import { Product,CartProduct } from '../../models';
+
 
 
 const ProductScreen = () => {
   const [product, setProduct] = useState<Product | undefined>(undefined)
-  const [option, setOption] = useState<string| null>(null);
+  const [option, setOption] = useState<string| undefined>(undefined);
   const [qty, setQty] = useState(1);
   const route = useRoute();
-
-  const handlePress = () => {
-    console.log('press');
-  };
+  const navigation = useNavigation();
 
   useEffect(() => {
     if(!route.params?.id){
@@ -37,6 +35,21 @@ const ProductScreen = () => {
     return <ActivityIndicator/>
   }
   
+  const handlePress = async () => {
+    const userData = await Auth.currentAuthenticatedUser();
+    if(!product || !userData){
+      return;
+    }
+ 
+    const newCartProduct = new CartProduct({
+      userSub:userData?.attributes.sub,
+      quantity:qty,
+      option,
+      productID:product.id
+    });
+    await DataStore.save(newCartProduct);
+    navigation.navigate("ShoppingCartStack")
+  };
   return (
     <ScrollView style={styles.root}>
       <Text style={styles.title}>{product.title}</Text>
@@ -45,7 +58,7 @@ const ProductScreen = () => {
       <Picker
         selectedValue={option}
         onValueChange={(itemValue, itemIndex) => setOption(itemValue)}>
-        {product.options.map((option, index) => (
+        {product.options?.map((option, index) => (
           <Picker.Item label={option} value={option} key={index} />
         ))}
       </Picker>

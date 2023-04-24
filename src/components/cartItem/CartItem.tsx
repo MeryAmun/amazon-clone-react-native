@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, ActivityIndicator} from 'react-native';
 import { useState } from 'react'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { styles } from './styles'
@@ -13,7 +13,7 @@ interface CartItemProps{
     id:string,
     quantity:number,
     option?:string,
-    item:{
+    product:{
       id: string,
       title: string,
       image?:string,
@@ -25,39 +25,41 @@ interface CartItemProps{
   }
 }
 const CartItem = ({cartItem}:CartItemProps) => {
-  const {item, quantity } = cartItem;
+  const {product, quantity } = cartItem;
   const [qty, setQty] = useState(quantity)
- 
+  console.log(product,'chebs')
   return (
     <View style={styles.rootContainer}>
       <View style={styles.subRoot}>
-        <Image
-          style={styles.image}
-          source={{uri: item.image}}
-          
-        />
+      {
+        product.image  ?   <Image
+        style={styles.image}
+        source={{uri: product.image}}
+        
+      /> : <ActivityIndicator/>
+      }
         <View style={styles.rightContainer}>
           <Text style={styles.title} numberOfLines={3}>
-           {item.title}
+           {product.title}
            
           </Text>
           <View style={styles.ratingsContainer}>
            {
             [0,0,0,0,0].map((el,index) => (
               <FontAwesome
-              key={`${item.id}-${index}`}
+              key={`${product.id}-${index}`}
               style={styles.star}
-              name={ index < Math.floor(item.avgRating) ? "star" : "star-o" }
+              name={ index < Math.floor(product.avgRating) ? "star" : "star-o" }
               size={18}
               color="#e47911"
             />
            
             ))
            }
-            <Text>{item.rating}</Text>
+            <Text>{product.rating}</Text>
           </View>
-          <Text style={styles.price}>{item.price}
-       { item.oldPrice &&  <Text style={styles.oldPrice}>{item.oldPrice}</Text>}
+          <Text style={styles.price}>{product.price}
+       { product.oldPrice &&  <Text style={styles.oldPrice}>{product.oldPrice}</Text>}
           </Text>
         </View>
       </View>
