@@ -10,22 +10,19 @@ import products from '../../data/products';
 const ShoppingCart = () => {
   const [cartProducts, setCartProducts] = useState<CartProduct[]>([]);
   const navigation = useNavigation()
-  const totalPrice = 0
-  // const totalPrice = cart.reduce(
-  //   (total, initialValue) =>
-  //     total + initialValue.item.price * initialValue.quantity,
-  //   0,
-  // );
+ 
+  
 
 
 
   useEffect(() => {
     const fetchCartData = async () => {
-    // const userData = await Auth.currentAuthenticatedUser();
+     const userData = await Auth.currentAuthenticatedUser();
     // if(!cartProducts.length || !userData){
     //   return;
     // }
-   await DataStore.query(CartProduct).then(setCartProducts)
+   await DataStore.query(CartProduct, cp => cp.userSub.eq(userData.attributes.sub),
+    ).then(setCartProducts)
   }
   fetchCartData()
    
@@ -53,7 +50,32 @@ const ShoppingCart = () => {
   }
   fetchProducts()
  
+  }, [cartProducts]);
+
+  useEffect(() => {
+    const subscriptions = cartProducts.map(cp =>  DataStore.observe(CartProduct, cp.id).subscribe(msg => {
+      if(msg.opType === 'UPDATE'){
+        setCartProducts(currCartProducts => currCartProducts.map(cp => {
+          if(cp.id !== msg.element.id){
+            return cp;
+          }
+          return {
+            ...cp,
+            ...msg.element
+          }
+        }))
+      }
+      // console.log(msg.opType);
+      // console.log(msg.element);
+    }));
+    
+    // Call unsubscribe to close the subscription
+   return () =>{ 
+    subscriptions.forEach(sub => sub.unsubscribe())
+  };
+   
   }, [cartProducts])
+  
 
   const handleCheckout = () => {
     navigation.navigate("AddressScreen")
@@ -62,6 +84,13 @@ const ShoppingCart = () => {
      if(cartProducts.filter(cp => !cp.product).length !== 0){
       return <ActivityIndicator/>
     }
+// const totalPrice = 0
+    const totalPrice = cartProducts.reduce(
+      (total, product) =>
+        total + (product?.product?._j?.price || 0) * product?.quantity,
+      0,
+    );
+    console.log(totalPrice)
   return (
     <View>
       <FlatList
@@ -72,7 +101,7 @@ const ShoppingCart = () => {
         ListHeaderComponent={() => (
           <View>
         <Text style={styles.subTotalTitle}>
-          Subtotal ({cart.length} items):{' '}
+          Subtotal ({cartProducts.length} items):{' '}
           <Text style={styles.subTotalPrice}>{totalPrice.toFixed(2)}$</Text>
         </Text>
         <Buttons

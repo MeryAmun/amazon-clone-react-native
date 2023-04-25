@@ -1,4 +1,4 @@
-import { View, StyleSheet,FlatList } from 'react-native';
+import { View, StyleSheet,FlatList, ActivityIndicator } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { ProductItem } from '../../components'
 //import products from '../../data/products';
@@ -20,6 +20,10 @@ const HomeScreen = ({searchTerm}:HomeScreenProps) => {
 // }
 // fetchProducts()
  }, [])
+
+ if(products.length === 0){
+  return <ActivityIndicator/>
+ }
  
   return (
     <View style={styles.root}>
